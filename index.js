@@ -142,6 +142,28 @@ Menu.prototype.write = function (msg) {
     }
 };
 
+Menu.prototype.writeWrapped = function (msg) {
+    var width = this.width;
+    var words = msg.split(' ');
+
+    var line = words[0];
+    var potentialLength = 0;
+    for (var i = 0; i < words.length; i++){
+        potentialLength = line.length + words[i].length + 1;
+        if (potentialLength > width){
+            this.write(line + '\n');
+            line = words[i];
+        }
+        else if (i === 0){
+            line = words[i];
+        }
+        else{
+            line += ' ' + words[i];   
+        }
+    }
+    this.write(line);
+};
+
 Menu.prototype._draw = function () {
     for (var i = 0; i < this.padding.top; i++) {
         this._fillLine(this.init.y + i);

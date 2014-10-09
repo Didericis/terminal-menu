@@ -2,6 +2,8 @@ var menu = require('../')({ width: 29, x: 4, y: 2 });
 menu.reset();
 menu.write('SERIOUS BUSINESS TERMINAL\n');
 menu.write('-------------------------\n');
+menu.writeWrapped('This long description demonstrates what writeWrapped does\n');
+menu.write('-------------------------\n');
 
 menu.add('ADD TRANSACTION INVOICE');
 menu.add('BUSINESS INTELLIGENCE');
